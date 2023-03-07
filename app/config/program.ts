@@ -2,6 +2,8 @@ import { Command } from "commander";
 import path from "path";
 import { sticker } from "@poppinss/cliui";
 
+import CMValidationsUtils from "cm-validations-utils";
+
 const program = new Command();
 
 program
@@ -17,12 +19,12 @@ program
   .argument("<id_sick>", "id of sick")
   .argument("<id_error>", "id of error")
   .action((route, id_sick, id_error) => {
-    const _JSON = require(path.join(process.cwd(), route));
+    // const _JSON = require(path.join(process.cwd(), route));
+    CMValidationsUtils._functions.jsonToQuery(route, id_sick, id_error);
+    // sticker()
+    //   .add(`('${JSON.stringify(_JSON)}',${id_sick},"${id_error}")`)
 
-    sticker()
-      .add(`('${JSON.stringify(_JSON)}',${id_sick},"${id_error}")`)
-
-      .render();
+    //   .render();
   });
 
 export default program;
