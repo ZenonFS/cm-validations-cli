@@ -1,21 +1,22 @@
 import { Command } from "commander";
 import { sticker } from "@poppinss/cliui";
 import { jsonToStringify } from "../utils/functions/jsonToStringify";
-import clipboard from "clipboardy";
+// import clipboard from "clipboardy";
 
 const program = new Command();
+const { version } = require("./../../package.json");
 
 program
   .alias("cmv")
   .name("cmv")
   .description("CM Validations CLI")
-  .version("0.1.0");
+  .version(version);
 
 program.command("ping").action(() => {
   console.log("pong");
-  clipboard.writeSync("🦄");
+  // clipboard.writeSync("🦄");
 
-  console.log(clipboard.readSync());
+  // console.log(clipboard.readSync());
 });
 
 program
