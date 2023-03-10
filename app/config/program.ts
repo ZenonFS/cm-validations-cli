@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import { sticker } from "@poppinss/cliui";
 import { jsonToStringify } from "../utils/functions/jsonToStringify";
+import clipboard from "clipboardy";
 
 const program = new Command();
 
@@ -12,6 +13,9 @@ program
 
 program.command("ping").action(() => {
   console.log("pong");
+  clipboard.writeSync("🦄");
+
+  console.log(clipboard.readSync());
 });
 
 program
