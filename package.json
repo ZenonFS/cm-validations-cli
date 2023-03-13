@@ -14,9 +14,6 @@
     "zenon",
     "zenonfs"
   ],
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/package/cm-validations-cli"
-  },
   "author": "ZenonFS",
   "license": "MIT",
   "dependencies": {

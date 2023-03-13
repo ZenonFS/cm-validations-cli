@@ -20,7 +20,7 @@ program.command("ping").action(() => {
 });
 
 program
-  .command("stringify-json")
+  .command("json-to-stringify")
   .description("Stringify the JSON")
   .argument("<route_json>", "route of json")
   .argument("<route_sql>", "route of sql to append data")
