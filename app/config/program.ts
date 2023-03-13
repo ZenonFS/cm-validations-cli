@@ -22,11 +22,12 @@ program.command("ping").action(() => {
 program
   .command("stringify-json")
   .description("Stringify the JSON")
-  .argument("<route>", "route of json")
-  .action((route) => {
+  .argument("<route_json>", "route of json")
+  .argument("<route_sql>", "route of sql to append data")
+  .action((route_json, route_sql) => {
     // sticker().add(jsonToStringify(route)).render();
     console.log(`
-    ${jsonToStringify(route)}
+    ${jsonToStringify(route_json, route_sql)}
     `);
   });
 
