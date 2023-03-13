@@ -1,7 +1,11 @@
 import path from "path";
 import fs from "fs";
 
-export const jsonToStringify = (route: string, routeToAppend?: string) => {
+export const jsonToStringify = (
+  route: string,
+  routeToAppend?: string,
+  showInTerminal?: boolean
+) => {
   const { idError, idSick, validations, parameter } = require(path.join(
     process.cwd(),
     route
@@ -15,5 +19,8 @@ export const jsonToStringify = (route: string, routeToAppend?: string) => {
       `,${DATA_TO_RETURN}`
     );
   }
-  return DATA_TO_RETURN;
+  if (showInTerminal)
+    console.log(`
+    ${DATA_TO_RETURN}
+    `);
 };

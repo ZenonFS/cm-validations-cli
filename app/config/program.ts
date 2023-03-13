@@ -1,7 +1,5 @@
 import { Command } from "commander";
-import { sticker } from "@poppinss/cliui";
 import { jsonToStringify } from "../utils/functions/jsonToStringify";
-// import clipboard from "clipboardy";
 
 const program = new Command();
 const { version } = require("./../../package.json");
@@ -14,21 +12,18 @@ program
 
 program.command("ping").action(() => {
   console.log("pong");
-  // clipboard.writeSync("🦄");
-
-  // console.log(clipboard.readSync());
 });
 
 program
   .command("json-to-stringify")
+  .alias("jts")
   .description("Stringify the JSON")
   .argument("<route_json>", "route of json")
   .argument("<route_sql>", "route of sql to append data")
+  .option("-st|--show-in-terminal", "show in terminal the result", false)
   .action((route_json, route_sql) => {
-    // sticker().add(jsonToStringify(route)).render();
-    console.log(`
-    ${jsonToStringify(route_json, route_sql)}
-    `);
+    const { showInTerminal } = program.opts();
+    jsonToStringify(route_json, route_sql, showInTerminal);
   });
 
 export default program;
