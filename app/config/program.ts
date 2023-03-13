@@ -24,7 +24,10 @@ program
   .description("Stringify the JSON")
   .argument("<route>", "route of json")
   .action((route) => {
-    sticker().add(jsonToStringify(route)).render();
+    // sticker().add(jsonToStringify(route)).render();
+    console.log(`
+    ${jsonToStringify(route)}
+    `);
   });
 
 export default program;
