@@ -1,15 +1,37 @@
 import path from "path";
 import fs from "fs";
 
-export const jsonToStringify = (
-  route: string,
-  routeToAppend?: string,
-  showInTerminal?: boolean
+export const jsonToStringify = (route: string, routeToAppend?: string) => {
+  convertJson(require(path.join(process.cwd(), route)), routeToAppend);
+};
+
+export const arrayToStringify = (route: string, routeToAppend?: string) => {
+  require(path.join(process.cwd(), route)).map(
+    ({
+      idError,
+      idSick,
+      validations,
+      parameter,
+    }: {
+      idError: string;
+      idSick: string;
+      validations: any[];
+      parameter: string;
+    }) => {
+      convertJson({ idError, idSick, validations, parameter }, routeToAppend);
+    }
+  );
+};
+
+const convertJson = (
+  {
+    idError,
+    idSick,
+    validations,
+    parameter,
+  }: { idError: string; idSick: string; validations: any[]; parameter: string },
+  routeToAppend?: string
 ) => {
-  const { idError, idSick, validations, parameter } = require(path.join(
-    process.cwd(),
-    route
-  ));
   const DATA_TO_RETURN = `("${parameter}",'${JSON.stringify(
     validations
   )}',${idSick},"${idError}")`;
@@ -18,9 +40,10 @@ export const jsonToStringify = (
       path.join(process.cwd(), routeToAppend),
       `,${DATA_TO_RETURN}`
     );
+    return;
   }
-  if (showInTerminal)
-    console.log(`
+
+  console.log(`
     ${DATA_TO_RETURN}
     `);
 };

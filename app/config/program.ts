@@ -20,10 +20,18 @@ program
   .description("Stringify the JSON")
   .argument("<route_json>", "route of json")
   .argument("<route_sql>", "route of sql to append data")
-  .option("-st|--show-in-terminal", "show in terminal the result", false)
   .action((route_json, route_sql) => {
-    const { showInTerminal } = program.opts();
-    jsonToStringify(route_json, route_sql, showInTerminal);
+    jsonToStringify(route_json, route_sql);
+  });
+
+program
+  .command("array-to-stringify")
+  .alias("ats")
+  .description("Array of JSONs to Stringify")
+  .argument("<route_jsonarray>", "route of aaray of jsons")
+  .argument("<route_sql>", "route of sql to append data")
+  .action((route_json, route_sql) => {
+    jsonToStringify(route_json, route_sql);
   });
 
 export default program;
