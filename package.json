@@ -17,9 +17,6 @@
   "author": "ZenonFS",
   "license": "MIT",
   "dependencies": {
-    "@poppinss/cliui": "^3.0.5",
-    "clipboardy": "^3.0.0",
-    "cm-validations-utils": "^0.2.7-test04",
     "commander": "^10.0.0"
   },
   "devDependencies": {
